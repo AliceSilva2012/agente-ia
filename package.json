@@ -8,5 +8,11 @@
   "keywords": [],
   "author": "Alice Silva Pereira",
   "license": "ISC",
-  "description": "Fazendo um agente de IA."
+  "description": "Fazendo um agente de IA.",
+  "dependencies": {
+    "@google/genai": "^2.31.0",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0"
+  }
 }

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <title>S.E.X.T.A-.F.E.I.R.A. Core</title>
+</head>
+<body>
+
+  <button id="core-btn">LIGAR CORE</button>
+  <div id="display-text">Clique no botão para falar com o S.E.X.T.A-.F.E.I.R.A.</div>
+
+  <script>
+    const coreBtn = document.getElementById('core-btn');
+    const displayText = document.getElementById('display-text');
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      displayText.innerText = "Navegador não suporta a Web Speech API.";
+    } else {
+      const recognition = new SpeechRecognition();
+      
+      // Configurações essenciais para evitar o erro instantâneo
+      recognition.lang = 'pt-BR';
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      coreBtn.addEventListener('click', () => {
+        try {
+          recognition.start();
+          coreBtn.classList.add('listening');
+          displayText.innerText = "Ouvindo você, Senhor...";
+        } catch (e) {
+          console.log("Reconhecimento já estava ativo ou em transição:", e);
+        }
+      });
+
+      recognition.onresult = async (event) => {
+        const transcricao = event.results[0][0].transcript;
+        console.log("Transcrição capturada:", transcricao);
+        
+        coreBtn.classList.remove('listening');
+        displayText.innerText = `Você: "${transcricao}"`;
+
+        try {
+          displayText.innerText = "S.E.X.T.A-.F.E.I.R.A. está pensando...";
+
+          const respostaServidor = await fetch('http://localhost:3000/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: transcricao })
+          });
+
+          const data = await respostaServidor.json();
+
+          displayText.innerText = `"${data.reply}"`;
+          falar(data.reply);
+        } catch (err) {
+          displayText.innerText = "Erro ao conectar com o servidor Node.js.";
+          console.error("Erro no Fetch:", err);
+        }
+      };
+
+      recognition.onerror = (event) => {
+        console.error("Erro detalhado do SpeechRecognition:", event.error);
+        coreBtn.classList.remove('listening');
+        displayText.innerText = `Erro no microfone: ${event.error}. Tente novamente.`;
+      };
+    }
+
+    function falar(texto) {
+      const sintese = window.speechSynthesis;
+      const mensagem = new SpeechSynthesisUtterance(texto);
+      mensagem.lang = 'pt-BR';
+      mensagem.rate = 1.0;
+      mensagem.pitch = 0.95;
+
+      sintese.speak(mensagem);
+    }
+  </script>
+</body>
+</html>
