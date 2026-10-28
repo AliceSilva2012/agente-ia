@@ -26,7 +26,7 @@ app.post('/api/chat', async (req, res) => {
     const { message } = req.body;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-1.5-flash',
       contents: message,
       config: {
         systemInstruction: SYSTEM_PROMPT,
@@ -35,8 +35,8 @@ app.post('/api/chat', async (req, res) => {
 
     res.json({ reply: response.text });
   } catch (error) {
-    console.error('Erro na API:', error);
-    res.status(500).json({ reply: 'Senhora, identifiquei uma falha nos meus sistemas centrais.' });
+    console.error('Erro detalhado na API:', error);
+    res.status(500).json({ reply: 'Senhor, identifiquei uma falha nos meus sistemas centrais.' });
   }
 });
 
