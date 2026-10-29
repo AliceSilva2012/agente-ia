@@ -58,20 +58,23 @@ A aplicação escuta os comandos do usuário através do microfone, converte a f
 1. **Clone o repositório:**
    ```bash
    git clone https://github.com/AliceSilva2012/agente-ia.git
+   ```
+2. **Acesse a pasta do projeto:**
+   ```bash
    cd agente-ia
    ```
    
-2. **Instale as dependências do Node.js:**
+3. **Instale as dependências do Node.js:**
    ```bash
    npm install
    ```
 
-3. **Inicie o servidor Backend:**
+4. **Inicie o servidor Backend:**
    ```bash
    node server.js
    ```
 
-4. **Inicie a interface Frontend:**
+5. **Inicie a interface Frontend:**
 
 - Clique com o botão direito no arquivo index.html e selecione Open with Live Server.
 
