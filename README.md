@@ -57,7 +57,7 @@ A aplicação escuta os comandos do usuário através do microfone, converte a f
 
 1. **Clone o repositório:**
    ```bash
-   git clone
+   git clone https://github.com/AliceSilva2012/agente-ia.git
    cd agente-ia
    ```
    
