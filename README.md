@@ -1,4 +1,4 @@
-# 🤖 S.E.X.T.A.-F.E.I.R.A. Core
+# 🤖 S.E.X.T.A.-F.E.I.R.A. 
 
 <img width="1440" height="900" alt="image" src="https://github.com/user-attachments/assets/3b218bc1-ad1a-469d-aeff-c49be5f4220e" />
 
