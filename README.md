@@ -20,7 +20,7 @@
 
 A **S.E.X.T.A.-F.E.I.R.A.** é um projeto full-stack local que conecta uma interface visual moderna a um servidor Node.js intermediário alimentado pelo SDK oficial do Google Gemini.
 
-A aplicação escuta os comandos do usuário através do microfone, converte a fala em texto via **Web Speech Recognition API**, envia o prompt para o backend, processa a resposta com a personalidade ajustada da assistente e responde ao usuário utilizando síntese de voz nativa (**SpeechSynthesis API**).
+A aplicação escuta os comandos do usuário através do microfone, converte a fala em texto via **Web Speech Recognition API**, envia o prompt para o back-end, processa a resposta com a personalidade ajustada da assistente e responde ao usuário utilizando síntese de voz nativa (**SpeechSynthesis API**).
 
 ---
 
