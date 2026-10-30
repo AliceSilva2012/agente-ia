@@ -12,7 +12,7 @@
 > Uma assistente virtual interativa inspirada na IA do Homem de Ferro, integrando o modelo Gemini da Google com APIs nativas do navegador para reconhecimento e síntese de voz em tempo real.
 
 > [!NOTE]
-> **🚧 Projeto em Desenvolvimento:** Esta é a versão base (v1.0) do assistente. Novas rotas, integração com automações locais e aprimoramentos de interface estão em constante implementação.
+> **🚧 Projeto em Desenvolvimento:** Esta é a versão base (v1.0) da assistente. Novas rotas, integração com automações locais e aprimoramentos de interface estão em constante implementação.
 
 ---
 
