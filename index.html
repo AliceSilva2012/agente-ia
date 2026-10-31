@@ -14,43 +14,46 @@
 
   <script>
     function falar(texto) {
-      window.speechSynthesis.cancel(); // Cancela falas anteriores para não acumular
+  window.speechSynthesis.cancel(); // Cancela falas anteriores
 
-      // Limpa caracteres especiais, parênteses e tópicos numerados antes de ler
-      const textoLimpo = texto.replace(/\(.*?\)/g, '').replace(/\d+\.\s*/g, '').trim();
-      
-      const utterance = new SpeechSynthesisUtterance(textoLimpo);
-      utterance.lang = 'pt-BR';
+  // Limpa apenas parênteses e numerações de listas (ex: "1. "), mantendo os números do texto
+  const textoLimpo = texto
+    .replace(/\(.*?\)/g, '')         // Remove texto entre parênteses
+    .replace(/^\d+\.\s*/gm, '')       // Remove apenas números de tópicos no início de linhas (ex: "1. ")
+    .trim();
 
-      const aplicarVoz = () => {
-        const voices = window.speechSynthesis.getVoices();
-        
-        // Procura por vozes masculinas conhecidas em português
-        const vozMasculina = voices.find(voice => 
-          voice.lang.includes('pt') && 
-          (voice.name.includes('Daniel') || 
-           voice.name.includes('Jorge') || 
-           voice.name.includes('Ricardo') || 
-           voice.name.toLowerCase().includes('male'))
-        );
+  const utterance = new SpeechSynthesisUtterance(textoLimpo);
+  utterance.lang = 'pt-BR';
 
-        if (vozMasculina) {
-          utterance.voice = vozMasculina;
-        }
+  const aplicarVoz = () => {
+    const voices = window.speechSynthesis.getVoices();
 
-        // Ajusta o tom para soar mais grave (estilo JARVIS)
-        utterance.pitch = 0.85; 
-        utterance.rate = 1.0;   
+    // Procura por vozes masculinas conhecidas no sistema
+    const vozMasculina = voices.find(v => 
+      v.lang.includes('pt') && 
+      (v.name.includes('Felipe') || 
+       v.name.includes('Daniel') || 
+       v.name.includes('Ricardo') || 
+       v.name.includes('Jorge') ||
+       v.name.toLowerCase().includes('male'))
+    );
 
-        window.speechSynthesis.speak(utterance);
-      };
-
-      if (window.speechSynthesis.getVoices().length !== 0) {
-        aplicarVoz();
-      } else {
-        window.speechSynthesis.onvoiceschanged = aplicarVoz;
-      }
+    if (vozMasculina) {
+      utterance.voice = vozMasculina;
     }
+
+    utterance.pitch = 0.85; 
+    utterance.rate = 1.0;   
+
+    window.speechSynthesis.speak(utterance);
+  };
+
+  if (window.speechSynthesis.getVoices().length !== 0) {
+    aplicarVoz();
+  } else {
+    window.speechSynthesis.onvoiceschanged = aplicarVoz;
+  }
+}
 
     const coreBtn = document.getElementById('core-btn');
     const displayText = document.getElementById('display-text');
