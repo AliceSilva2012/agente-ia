@@ -94,6 +94,8 @@ graph TD
     A --> E[.env]
     A --> F[.gitignore]
     A --> G[README.md]
+    A --> H[package.json]
+    A --> I[package-lock.json]
 
     style B fill:#e34f26,stroke:#fff,stroke-width:2px,color:#fff
     style C fill:#1572b6,stroke:#fff,stroke-width:2px,color:#fff
@@ -101,4 +103,6 @@ graph TD
     style E fill:#6566f1,stroke:#fff,stroke-width:2px,color:#fff
     style F fill:#555,stroke:#fff,stroke-width:2px,color:#fff
     style G fill:#000,stroke:#fff,stroke-width:2px,color:#fff
+    style H fill:#339933,stroke:#fff,stroke-width:2px,color:#fff
+    style I fill:#339933,stroke:#fff,stroke-width:2px,color:#fff
 ```
