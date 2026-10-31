@@ -6,30 +6,31 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![NodeJS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![Gemini API](https://img.shields.io/badge/Google_Gemini-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white)
+![OpenRouter](https://img.shields.io/badge/OpenRouter-6566F1?style=for-the-badge&logo=openai&logoColor=white)
 ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 
-> Uma assistente virtual interativa inspirada na IA do Homem de Ferro, integrando o modelo Gemini da Google com APIs nativas do navegador para reconhecimento e síntese de voz em tempo real.
+> Um assistente virtual interativo inspirado na IA do Homem de Ferro, integrando o modelo Llama 3.2 da Meta via OpenRouter API com APIs nativas do navegador para reconhecimento e síntese de voz em tempo real.
 
 > [!NOTE]
-> **🚧 Projeto em Desenvolvimento:** Esta é a versão base (v1.0) da assistente. Novas rotas, integração com automações locais e aprimoramentos de interface estão em constante implementação.
+> **🚧 Projeto em Desenvolvimento:** Esta é a versão v1.0 do assistente. Novas rotas, sincronização de horário local dinâmico e aprimoramentos na seleção de voz masculina nativa estão configurados.
 
 ---
 
 ## 💻 Sobre o Projeto
 
-O **J.A.R.V.I.S.** é um projeto full-stack local que conecta uma interface visual moderna a um servidor Node.js intermediário alimentado pelo SDK oficial do Google Gemini.
+O **J.A.R.V.I.S.** é um projeto full-stack local que conecta uma interface visual futurista a um servidor Node.js intermediário integrado à API do OpenRouter (`meta-llama/llama-3.2-1b-instruct`).
 
-A aplicação escuta os comandos do usuário através do microfone, converte a fala em texto via **Web Speech Recognition API**, envia o prompt para o back-end, processa a resposta com a personalidade ajustada do assistente e responde ao usuário utilizando síntese de voz nativa (**SpeechSynthesis API**).
+A aplicação escuta os comandos do usuário através do microfone, converte a fala em texto via **Web Speech Recognition API**, injeta dinamicamente o contexto de data/hora atual no back-end, processa a resposta com a personalidade refinada do assistente e responde ao usuário utilizando síntese de voz nativa masculina (**SpeechSynthesis API**).
 
 ---
 
 ## ⚙️ Funcionalidades
 
-- **Reconhecimento de Voz:** Captura contínua e precisa de áudio do microfone via navegador em português (`pt-BR`).
-- **Comunicação com IA em Tempo Real:** Conexão assíncrona (`fetch` / REST API) com o backend Node.js.
-- **Personalidade Customizada:** Respostas diretas, concisas e otimizadas para leitura por voz através de *System Instructions* no Gemini.
-- **Resposta em Áudio (TTS):** Síntese de voz em tempo real que lê as respostas da assistente.
+- **Reconhecimento de Voz:** Captura de áudio do microfone via navegador em português (`pt-BR`).
+- **Comunicação com IA em Tempo Real:** Conexão assíncrona (`fetch` / REST API) com o backend Node.js e OpenRouter.
+- **Data e Hora Sincronizadas:** Injeção dinâmica do relógio local no sistema prompt para respostas precisas de tempo e data.
+- **Personalidade Customizada:** Respostas corteses, britânicas, elegantes e extremamente diretas (máximo 1 a 2 frases).
+- **Resposta em Áudio Masculina (TTS):** Síntese de voz com filtros para seleção de vozes masculinas e tom grave estilo J.A.R.V.I.S.
 - **Interface Futurista:** Design temático estilo *Core/Arc Reactor*, com feedback visual de estado (modo escuta e processamento).
 
 ---
@@ -42,7 +43,7 @@ A aplicação escuta os comandos do usuário através do microfone, converte a f
   - **Web Speech API:** Interface `SpeechRecognition` para áudio-texto e `SpeechSynthesis` para texto-áudio.
   - **Express.js:** Criação de rotas HTTP e gerenciamento de requisições `POST`.
   - **Dotenv:** Gerenciamento seguro de variáveis de ambiente locais.
-  - **@google/genai:** SDK oficial da Google para integração com o modelo `gemini-1.5-flash`.
+  - **OpenRouter API:** Conexão com o modelo `meta-llama/llama-3.2-1b-instruct`.
 
 ---
 
@@ -51,7 +52,7 @@ A aplicação escuta os comandos do usuário através do microfone, converte a f
 ### Pré-requisitos
 - [Node.js](https://nodejs.org) instalado na máquina.
 - Extensão **Live Server** instalada no VS Code.
-- Uma chave de API gratuita do [Google AI Studio](https://aistudio.google.com).
+- Uma chave de API gratuita do [OpenRouter](https://openrouter.ai).
 
 ### ☕ Passo a Passo
 
@@ -63,24 +64,23 @@ A aplicação escuta os comandos do usuário através do microfone, converte a f
    ```bash
    cd agente-ia
    ```
-   
 3. **Instale as dependências do Node.js:**
    ```bash
-   npm install
+   Instale as dependências do Node.js:
    ```
-
-4. **Inicie o servidor Backend:**
+4. **Configure as variáveis de ambiente:
+Crie um arquivo .env na raiz do projeto com a sua chave da OpenRouter: (crie uma conta em [OpenRouter](https://openrouter.ai)**
+  ```bash
+  OPENROUTER_API_KEY= sua_chave_sk_or_v1_aqui
+  ```
+5. **Inicie o servidor Backend:**
    ```bash
    node server.js
    ```
-
-5. **Inicie a interface Frontend:**
-
-- Clique com o botão direito no arquivo index.html e selecione Open with Live Server.
-
-- Conceda a permissão de uso do microfone ao navegador.
-
-- Clique no botão LIGAR CORE e comece a interagir!
+6. **Inicie a interface Frontend:**
+   - Clique com o botão direito no arquivo index.html e selecione Open with Live Server.
+   - Conceda a permissão de uso do microfone ao navegador.
+   - Clique no botão LIGAR CORE e comece a interagir!
 
 ---
 
@@ -93,10 +93,12 @@ graph TD
     A --> D[server.js]
     A --> E[.env]
     A --> F[.gitignore]
+    A --> G[README.md]
 
     style B fill:#e34f26,stroke:#fff,stroke-width:2px,color:#fff
     style C fill:#1572b6,stroke:#fff,stroke-width:2px,color:#fff
     style D fill:#339933,stroke:#fff,stroke-width:2px,color:#fff
-    style E fill:#8e75b2,stroke:#fff,stroke-width:2px,color:#fff
+    style E fill:#6566f1,stroke:#fff,stroke-width:2px,color:#fff
     style F fill:#555,stroke:#fff,stroke-width:2px,color:#fff
+    style G fill:#000,stroke:#fff,stroke-width:2px,color:#fff
 ```
