@@ -93,7 +93,6 @@ graph TD
     A --> D[server.js]
     A --> E[.env]
     A --> F[.gitignore]
-    A --> G[README.md]
     A --> H[package.json]
     A --> I[package-lock.json]
 
@@ -102,7 +101,6 @@ graph TD
     style D fill:#339933,stroke:#fff,stroke-width:2px,color:#fff
     style E fill:#6566f1,stroke:#fff,stroke-width:2px,color:#fff
     style F fill:#555,stroke:#fff,stroke-width:2px,color:#fff
-    style G fill:#000,stroke:#fff,stroke-width:2px,color:#fff
     style H fill:#339933,stroke:#fff,stroke-width:2px,color:#fff
     style I fill:#339933,stroke:#fff,stroke-width:2px,color:#fff
 ```
