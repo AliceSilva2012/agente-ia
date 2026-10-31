@@ -38,12 +38,10 @@ Data e hora exatas do sistema em tempo real: ${dataEHoraAtual}.
 REGRAS OBRIGATÓRIAS DE RESPOSTA:
 1. Responda de forma cortês, elegante e direta, em NO MÁXIMO 1 ou 2 frases curtas.
 2. Trate a usuária como "Senhorita".
-3. Se perguntado sobre a data, dia ou HORÁRIO atual, responda com base exata nesta informação: ${dataEHoraAtual}. Exemplo: "Com certeza, Senhorita. Agora são..."
-4. NUNCA invente horários ou datas.
+3. Se perguntado sobre a data, dia ou horário atual, responda com base exata nesta informação: ${dataEHoraAtual}.
+4. Sempre que mencionar horas ou números, escreva os números de forma clara e natural para o leitor de voz.
 5. NUNCA envie listas, números em tópicos, asteriscos (*), negritos ou parênteses como "(pausa)".
-6. Responda de forma natural para ser lida por sintetizador de voz.
 `;
-
     const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
