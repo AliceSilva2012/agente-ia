@@ -1,6 +1,6 @@
-# 🤖 S.E.X.T.A.-F.E.I.R.A. 
+# 🤖 J.A.R.V.I.S.
 
-<img width="1440" height="900" alt="image" src="https://github.com/user-attachments/assets/3b218bc1-ad1a-469d-aeff-c49be5f4220e" />
+<img width="1440" height="900" alt="image" src="https://github.com/user-attachments/assets/b94962e8-e762-4244-87f8-f49f43a3284e" />
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -18,9 +18,9 @@
 
 ## 💻 Sobre o Projeto
 
-A **S.E.X.T.A.-F.E.I.R.A.** é um projeto full-stack local que conecta uma interface visual moderna a um servidor Node.js intermediário alimentado pelo SDK oficial do Google Gemini.
+O **J.A.R.V.I.S.** é um projeto full-stack local que conecta uma interface visual moderna a um servidor Node.js intermediário alimentado pelo SDK oficial do Google Gemini.
 
-A aplicação escuta os comandos do usuário através do microfone, converte a fala em texto via **Web Speech Recognition API**, envia o prompt para o back-end, processa a resposta com a personalidade ajustada da assistente e responde ao usuário utilizando síntese de voz nativa (**SpeechSynthesis API**).
+A aplicação escuta os comandos do usuário através do microfone, converte a fala em texto via **Web Speech Recognition API**, envia o prompt para o back-end, processa a resposta com a personalidade ajustada do assistente e responde ao usuário utilizando síntese de voz nativa (**SpeechSynthesis API**).
 
 ---
 
