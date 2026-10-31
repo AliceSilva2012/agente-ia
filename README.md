@@ -69,7 +69,7 @@ A aplicação escuta os comandos do usuário através do microfone, converte a f
    npm install
    ```
 4. **Configure as variáveis de ambiente:
-Crie um arquivo .env na raiz do projeto com a sua chave da OpenRouter: (crie uma conta em [OpenRouter](https://openrouter.ai)**
+Crie um arquivo .env na raiz do projeto com a sua chave da OpenRouter: (crie uma conta em [OpenRouter](https://openrouter.ai))**
   ```bash
   OPENROUTER_API_KEY= sua_chave_sk_or_v1_aqui
   ```
