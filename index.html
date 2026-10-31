@@ -5,14 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 
-  <title>S.E.X.T.A-.F.E.I.R.A. Core</title>
+  <title>J.A.R.V.I.S.</title>
 </head>
 <body>
 
   <button id="core-btn">LIGAR CORE</button>
-  <div id="display-text">Clique no botão para falar com o S.E.X.T.A-.F.E.I.R.A.</div>
+  <div id="display-text">Clique no botão para falar com o J.A.R.V.I.S.</div>
 
   <script>
+    function falar(texto) {
+      window.speechSynthesis.cancel(); // Cancela falas anteriores para não acumular
+
+      // Limpa caracteres especiais, parênteses e tópicos numerados antes de ler
+      const textoLimpo = texto.replace(/\(.*?\)/g, '').replace(/\d+\.\s*/g, '').trim();
+      
+      const utterance = new SpeechSynthesisUtterance(textoLimpo);
+      utterance.lang = 'pt-BR';
+
+      const aplicarVoz = () => {
+        const voices = window.speechSynthesis.getVoices();
+        
+        // Procura por vozes masculinas conhecidas em português
+        const vozMasculina = voices.find(voice => 
+          voice.lang.includes('pt') && 
+          (voice.name.includes('Daniel') || 
+           voice.name.includes('Jorge') || 
+           voice.name.includes('Ricardo') || 
+           voice.name.toLowerCase().includes('male'))
+        );
+
+        if (vozMasculina) {
+          utterance.voice = vozMasculina;
+        }
+
+        // Ajusta o tom para soar mais grave (estilo JARVIS)
+        utterance.pitch = 0.85; 
+        utterance.rate = 1.0;   
+
+        window.speechSynthesis.speak(utterance);
+      };
+
+      if (window.speechSynthesis.getVoices().length !== 0) {
+        aplicarVoz();
+      } else {
+        window.speechSynthesis.onvoiceschanged = aplicarVoz;
+      }
+    }
+
     const coreBtn = document.getElementById('core-btn');
     const displayText = document.getElementById('display-text');
 
@@ -23,7 +62,6 @@
     } else {
       const recognition = new SpeechRecognition();
       
-      // Configurações essenciais para evitar o erro instantâneo
       recognition.lang = 'pt-BR';
       recognition.continuous = false;
       recognition.interimResults = false;
@@ -32,7 +70,7 @@
         try {
           recognition.start();
           coreBtn.classList.add('listening');
-          displayText.innerText = "Ouvindo você, Senhor...";
+          displayText.innerText = "Ouvindo você, Senhorita...";
         } catch (e) {
           console.log("Reconhecimento já estava ativo ou em transição:", e);
         }
@@ -46,7 +84,7 @@
         displayText.innerText = `Você: "${transcricao}"`;
 
         try {
-          displayText.innerText = "S.E.X.T.A-.F.E.I.R.A. está pensando...";
+          displayText.innerText = "J.A.R.V.I.S. está pensando...";
 
           const respostaServidor = await fetch('http://localhost:3000/api/chat', {
             method: 'POST',
@@ -69,16 +107,6 @@
         coreBtn.classList.remove('listening');
         displayText.innerText = `Erro no microfone: ${event.error}. Tente novamente.`;
       };
-    }
-
-    function falar(texto) {
-      const sintese = window.speechSynthesis;
-      const mensagem = new SpeechSynthesisUtterance(texto);
-      mensagem.lang = 'pt-BR';
-      mensagem.rate = 1.0;
-      mensagem.pitch = 0.95;
-
-      sintese.speak(mensagem);
     }
   </script>
 </body>
