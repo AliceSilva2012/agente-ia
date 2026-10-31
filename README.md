@@ -66,7 +66,7 @@ A aplicação escuta os comandos do usuário através do microfone, converte a f
    ```
 3. **Instale as dependências do Node.js:**
    ```bash
-   Instale as dependências do Node.js:
+   npm install
    ```
 4. **Configure as variáveis de ambiente:
 Crie um arquivo .env na raiz do projeto com a sua chave da OpenRouter: (crie uma conta em [OpenRouter](https://openrouter.ai)**
