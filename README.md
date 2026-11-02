@@ -73,11 +73,11 @@ Crie um arquivo .env na raiz do projeto com a sua chave da OpenRouter: (crie uma
   ```bash
   OPENROUTER_API_KEY= sua_chave_sk_or_v1_aqui
   ```
-5. **Inicie o servidor Backend:**
+5. **Inicie o servidor Back-end:**
    ```bash
    node server.js
    ```
-6. **Inicie a interface Frontend:**
+6. **Inicie a interface Front-end:**
    - Clique com o botão direito no arquivo index.html e selecione Open with Live Server.
    - Conceda a permissão de uso do microfone ao navegador.
    - Clique no botão LIGAR CORE e comece a interagir!
