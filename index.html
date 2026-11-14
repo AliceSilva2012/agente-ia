@@ -8,51 +8,57 @@
 </head>
 <body>
 
-  <button id="core-btn">LIGAR CORE</button>
+  <button id="core-btn">LIGAR REATOR ARC</button>
   <div id="display-text">Clique no botão para falar com o J.A.R.V.I.S.</div>
 
   <script>
-    function falar(texto) {
-  window.speechSynthesis.cancel(); // Cancela falas anteriores
+    let vozesSistema = [];
 
-  // Limpa apenas parênteses e numerações de listas (ex: "1. "), mantendo os números do texto
-  const textoLimpo = texto
-    .replace(/\(.*?\)/g, '')         // Remove texto entre parênteses
-    .replace(/^\d+\.\s*/gm, '')       // Remove apenas números de tópicos no início de linhas (ex: "1. ")
-    .trim();
-
-  const utterance = new SpeechSynthesisUtterance(textoLimpo);
-  utterance.lang = 'pt-BR';
-
-  const aplicarVoz = () => {
-    const voices = window.speechSynthesis.getVoices();
-
-    // Procura por vozes masculinas conhecidas no sistema
-    const vozMasculina = voices.find(v => 
-      v.lang.includes('pt') && 
-      (v.name.includes('Felipe') || 
-       v.name.includes('Daniel') || 
-       v.name.includes('Ricardo') || 
-       v.name.includes('Jorge') ||
-       v.name.toLowerCase().includes('male'))
-    );
-
-    if (vozMasculina) {
-      utterance.voice = vozMasculina;
+    function carregarVozes() {
+      vozesSistema = window.speechSynthesis.getVoices();
     }
 
-    utterance.pitch = 0.85; 
-    utterance.rate = 1.0;   
+    carregarVozes();
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = carregarVozes;
+    }
 
-    window.speechSynthesis.speak(utterance);
-  };
+    function falar(texto) {
+      window.speechSynthesis.cancel();
 
-  if (window.speechSynthesis.getVoices().length !== 0) {
-    aplicarVoz();
-  } else {
-    window.speechSynthesis.onvoiceschanged = aplicarVoz;
-  }
-}
+      const textoLimpo = texto
+        .replace(/\(.*?\)/g, '')
+        .replace(/^\d+\.\s*/gm, '')
+        .trim();
+
+      const utterance = new SpeechSynthesisUtterance(textoLimpo);
+      utterance.lang = 'pt-BR';
+
+      if (vozesSistema.length === 0) {
+        vozesSistema = window.speechSynthesis.getVoices();
+      }
+
+      const nomesMasculinos = ['Antonio', 'Humberto', 'Felipe', 'Daniel', 'Ricardo', 'Jorge', 'Tiago', 'Male'];
+
+      const vozMasculina = vozesSistema.find(v =>
+        v.lang.includes('pt') &&
+        nomesMasculinos.some(nome => v.name.toLowerCase().includes(nome.toLowerCase()))
+      );
+
+      if (vozMasculina) {
+        utterance.voice = vozMasculina;
+        utterance.pitch = 0.92;
+        console.log("🎙️ Voz masculina selecionada:", vozMasculina.name);
+      } else {
+        const vozPadraoPT = vozesSistema.find(v => v.lang.includes('pt-BR'));
+        if (vozPadraoPT) utterance.voice = vozPadraoPT;
+        utterance.pitch = 0.75;
+        console.log("⚠️ Nenhuma voz masculina nativa encontrada. Usando ajuste grave na voz:", vozPadraoPT?.name);
+      }
+
+      utterance.rate = 1.02;
+      window.speechSynthesis.speak(utterance);
+    }
 
     const coreBtn = document.getElementById('core-btn');
     const displayText = document.getElementById('display-text');
@@ -63,13 +69,14 @@
       displayText.innerText = "Navegador não suporta a Web Speech API.";
     } else {
       const recognition = new SpeechRecognition();
-      
+
       recognition.lang = 'pt-BR';
       recognition.continuous = false;
       recognition.interimResults = false;
 
       coreBtn.addEventListener('click', () => {
         try {
+          window.speechSynthesis.cancel();
           recognition.start();
           coreBtn.classList.add('listening');
           displayText.innerText = "Ouvindo você, Senhorita...";
@@ -81,13 +88,11 @@
       recognition.onresult = async (event) => {
         const transcricao = event.results[0][0].transcript;
         console.log("Transcrição capturada:", transcricao);
-        
+
         coreBtn.classList.remove('listening');
-        displayText.innerText = `Você: "${transcricao}"`;
+        displayText.innerText = `Você: "${transcricao}" — Processando...`;
 
         try {
-          displayText.innerText = "J.A.R.V.I.S. está pensando...";
-
           const respostaServidor = await fetch('http://localhost:3000/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -102,6 +107,10 @@
           displayText.innerText = "Erro ao conectar com o servidor Node.js.";
           console.error("Erro no Fetch:", err);
         }
+      };
+
+      recognition.onend = () => {
+        coreBtn.classList.remove('listening');
       };
 
       recognition.onerror = (event) => {
