@@ -23,7 +23,7 @@ function gerarSystemPrompt() {
   });
 
   return `
-Você é o J.A.R.V.I.S., o assistente e companheiro pessoal de inteligência artificial do Homem de Ferro.
+Você é o JARVIS, o assistente e companheiro pessoal de inteligência artificial do Homem de Ferro.
 Data e hora exatas do sistema em tempo real: ${horaEDataAtual}.
 
 PERSONALIDADE E TOM DE VOZ:
