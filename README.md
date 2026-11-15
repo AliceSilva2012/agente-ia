@@ -74,15 +74,15 @@ A aplicação captura os comandos de voz do usuário pelo microfone em tempo rea
    npm install
    ```
 
-4. **Configure as variáveis de ambiente:
-Crie um arquivo .env na raiz do projeto com suas chaves de API:**
+4. **Configure as variáveis de ambiente:**
+Crie um arquivo .env na raiz do projeto com suas chaves de API:
 ```bash
 GROQ_API_KEY=sua_chave_gsk_aqui
 OPENROUTER_API_KEY=sua_chave_sk_or_v1_aqui
 ```
 
-5. **Inicie o servidor Back-end:
-   (Ou execute `node server.js`)**
+5. **Inicie o servidor Back-end:**
+   (Ou execute `node server.js`)
    ```bash
    npm start
    ```
