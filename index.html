@@ -31,33 +31,46 @@
         .replace(/^\d+\.\s*/gm, '')
         .trim();
 
-      const utterance = new SpeechSynthesisUtterance(textoLimpo);
-      utterance.lang = 'pt-BR';
+      const iniciarUtterance = () => {
+        const utterance = new SpeechSynthesisUtterance(textoLimpo);
+        utterance.lang = 'pt-BR';
 
-      if (vozesSistema.length === 0) {
-        vozesSistema = window.speechSynthesis.getVoices();
-      }
+        if (vozesSistema.length === 0) {
+          vozesSistema = window.speechSynthesis.getVoices();
+        }
 
-      const nomesMasculinos = ['Antonio', 'Humberto', 'Felipe', 'Daniel', 'Ricardo', 'Jorge', 'Tiago', 'Male'];
+        const nomesMasculinos = ['Felipe', 'Eddy', 'Reed', 'Rocko', 'Antonio', 'Humberto', 'Daniel', 'Ricardo', 'Jorge', 'Tiago', 'Male'];
 
-      const vozMasculina = vozesSistema.find(v =>
-        v.lang.includes('pt') &&
-        nomesMasculinos.some(nome => v.name.toLowerCase().includes(nome.toLowerCase()))
-      );
+        const vozMasculina =
+          vozesSistema.find(v => v.lang.toLowerCase().includes('pt') && v.name.toLowerCase().includes('felipe')) ||
+          vozesSistema.find(v =>
+            v.lang.toLowerCase().includes('pt') &&
+            nomesMasculinos.some(nome => v.name.toLowerCase().includes(nome.toLowerCase()))
+          );
 
-      if (vozMasculina) {
-        utterance.voice = vozMasculina;
-        utterance.pitch = 0.92;
-        console.log("🎙️ Voz masculina selecionada:", vozMasculina.name);
+        if (vozMasculina) {
+          utterance.voice = vozMasculina;
+          utterance.pitch = 1.0;
+          console.log("🎙️ Voz masculina selecionada:", vozMasculina.name);
+        } else {
+          const vozPadraoPT = vozesSistema.find(v => v.lang.toLowerCase().includes('pt'));
+          if (vozPadraoPT) utterance.voice = vozPadraoPT;
+          utterance.pitch = 0.75;
+          console.log("⚠️ Nenhuma voz masculina nativa encontrada. Usando ajuste grave na voz:", vozPadraoPT?.name);
+        }
+
+        utterance.rate = 1.02;
+        window.speechSynthesis.speak(utterance);
+      };
+
+      if (window.speechSynthesis.getVoices().length === 0) {
+        window.speechSynthesis.onvoiceschanged = () => {
+          carregarVozes();
+          iniciarUtterance();
+        };
       } else {
-        const vozPadraoPT = vozesSistema.find(v => v.lang.includes('pt-BR'));
-        if (vozPadraoPT) utterance.voice = vozPadraoPT;
-        utterance.pitch = 0.75;
-        console.log("⚠️ Nenhuma voz masculina nativa encontrada. Usando ajuste grave na voz:", vozPadraoPT?.name);
+        iniciarUtterance();
       }
-
-      utterance.rate = 1.02;
-      window.speechSynthesis.speak(utterance);
     }
 
     const coreBtn = document.getElementById('core-btn');
