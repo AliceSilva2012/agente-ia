@@ -83,7 +83,7 @@ OPENROUTER_API_KEY=sua_chave_sk_or_v1_aqui
 
 5. **Inicie o servidor Back-end:**
    ```bash
-   node server.js`
+   node server.js
    ```
 
 6. **Inicie a interface Front-end:**
