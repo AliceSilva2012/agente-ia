@@ -22,7 +22,7 @@
 
 O **J.A.R.V.I.S.** é uma aplicação full-stack local que conecta uma interface visual futurista (*Reator Arc*) a um servidor intermediário em Node.js e Express.
 
-A aplicação captura os comandos de voz do usuário pelo microfone em tempo real via **Web Speech Recognition API**, injeta dinamicamente o contexto de data e hora local no *system prompt* do back-end, consulta o modelo de IA principal na **Groq** (acionando o **OpenRouter** automaticamente caso ocorra qualquer falha) e devolve a resposta em áudio utilizando a **SpeechSynthesis API** com prioridade para vozes masculinas do sistema (porém, alguns navegadores acabam optando pela voz do próprio sistema operacional da máquina).
+A aplicação captura os comandos de voz do usuário pelo microfone em tempo real via **Web Speech Recognition API**, injeta dinamicamente o contexto de data e hora local no *system prompt* do back-end, consulta o modelo de IA principal na **Groq** (acionando o **OpenRouter** automaticamente caso ocorra qualquer falha) e devolve a resposta em áudio utilizando a **SpeechSynthesis API** com prioridade para vozes masculinas do sistema (aplicando ajuste de tom grave caso o navegador utilize a voz padrão).
 
 ---
 
@@ -75,11 +75,11 @@ A aplicação captura os comandos de voz do usuário pelo microfone em tempo rea
    ```
 
 4. **Configure as variáveis de ambiente:**
-Crie um arquivo .env na raiz do projeto com suas chaves de API:
-```bash
-GROQ_API_KEY=sua_chave_gsk_aqui
-OPENROUTER_API_KEY=sua_chave_sk_or_v1_aqui
-```
+   Crie um arquivo `.env` na raiz do projeto com suas chaves de API:
+   ```bash
+   GROQ_API_KEY=sua_chave_gsk_aqui
+   OPENROUTER_API_KEY=sua_chave_sk_or_v1_aqui
+   ```
 
 5. **Inicie o servidor Back-end:**
    ```bash
@@ -88,9 +88,9 @@ OPENROUTER_API_KEY=sua_chave_sk_or_v1_aqui
 
 6. **Inicie a interface Front-end:**
 
-- Clique com o botão direito no arquivo index.html e selecione Open with Live Server.
+- Clique com o botão direito no arquivo `index.html` e selecione **Open with Live Server**.
 - Conceda a permissão de uso do microfone ao navegador.
-- Clique em LIGAR REATOR ARC e comece a interagir!
+- Clique em `LIGAR REATOR ARC` e comece a interagir!
 
 ---
 
