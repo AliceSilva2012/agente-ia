@@ -10,7 +10,7 @@
   "keywords": [],
   "author": "Alice Silva Pereira",
   "license": "ISC",
-  "description": "Fazendo um agente de IA.",
+  "description": "Fazendo um J.A.R.V.I.S.",
   "dependencies": {
     "@google/genai": "^2.31.0",
     "cors": "^2.8.6",
