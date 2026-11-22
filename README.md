@@ -1,6 +1,6 @@
 # 🤖 J.A.R.V.I.S.
 
-<img width="723" height="430" alt="image" src="https://github.com/user-attachments/assets/c7dd940c-44e4-4a39-bbb9-692df567284d" />
+<img width="799" height="454" alt="image" src="https://github.com/user-attachments/assets/7dcc590d-f51e-4db2-a130-f9959f61d296" />
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
