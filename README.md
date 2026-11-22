@@ -122,31 +122,19 @@ flowchart LR
 
 ## 📁 Estrutura de Arquivos
 
-```mermaid
-graph TD
-    A[agente-ia] --> B[.github/]
-    B --> B1[workflows/node.js.yml]
-    A --> C[img/]
-    C --> C1[reactor.png]
-    A --> D[index.html]
-    A --> E[style.css]
-    A --> F[server.js]
-    A --> G[.env]
-    A --> H[.gitignore]
-    A --> I[package.json]
-    A --> J[package-lock.json]
-    A --> K[README.md]
-
-    style B fill:#2088ff,stroke:#fff,stroke-width:2px,color:#fff
-    style B1 fill:#2088ff,stroke:#fff,stroke-width:2px,color:#fff
-    style C fill:#00b4d8,stroke:#fff,stroke-width:2px,color:#fff
-    style C1 fill:#00b4d8,stroke:#fff,stroke-width:2px,color:#fff
-    style D fill:#e34f26,stroke:#fff,stroke-width:2px,color:#fff
-    style E fill:#1572b6,stroke:#fff,stroke-width:2px,color:#fff
-    style F fill:#339933,stroke:#fff,stroke-width:2px,color:#fff
-    style G fill:#f55036,stroke:#fff,stroke-width:2px,color:#fff
-    style H fill:#555,stroke:#fff,stroke-width:2px,color:#fff
-    style I fill:#339933,stroke:#fff,stroke-width:2px,color:#fff
-    style J fill:#339933,stroke:#fff,stroke-width:2px,color:#fff
-    style K fill:#181717,stroke:#fff,stroke-width:2px,color:#fff
+```text
+agente-ia/
+├── .github/
+│   └── workflows/
+│       └── node.js.yml      # Pipeline de CI/CD no GitHub Actions
+├── img/
+│   └── reactor.png          # Imagem base do Reator Arc
+├── .env                     # Chaves de API locais (Groq e OpenRouter)
+├── .gitignore               # Arquivos ignorados pelo Git (node_modules, .env)
+├── index.html               # Interface principal e integração com Web Speech API
+├── package.json             # Dependências e scripts (start e test)
+├── package-lock.json        # Versões exatas das dependências
+├── README.md                # Documentação do projeto
+├── server.js                # Servidor Node.js/Express e rotas da IA
+└── style.css                # Estilização, efeitos glow e filtros do Reator Arc
 ```
