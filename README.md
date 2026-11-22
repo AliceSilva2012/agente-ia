@@ -1,6 +1,6 @@
 # 🤖 J.A.R.V.I.S.
 
-<img width="847" height="414" alt="image" src="https://github.com/user-attachments/assets/2e95da0b-d06f-4908-8b19-6df33640c763" />
+https://github.com/user-attachments/assets/0d9dabb5-5bd5-45d5-83fc-d3af2fe1804e
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -78,8 +78,10 @@ A aplicação captura os comandos de voz do usuário pelo microfone em tempo rea
 4. **Configure as variáveis de ambiente:**
    Crie um arquivo `.env` na raiz do projeto com suas chaves de API:
    ```bash
-   GROQ_API_KEY=sua_chave_gsk_aqui
-   OPENROUTER_API_KEY=sua_chave_sk_or_v1_aqui
+   # Obrigatória
+   GROQ_API_KEY=sua_chave_aqui
+   # Opcional: utilizada como fallback
+   OPENROUTER_API_KEY=sua_chave_aqui
    ```
 
 5. **Inicie o servidor Back-end:**
@@ -91,7 +93,16 @@ A aplicação captura os comandos de voz do usuário pelo microfone em tempo rea
    - Clique com o botão direito no arquivo `index.html` e selecione **Open with Live Server**.
    - Conceda a permissão de uso do microfone ao navegador.
    - Clique no Reator Arc e comece a conversar com o J.A.R.V.I.S.!
-  
+
+---
+
+## ‼️ DETALHES IMPORTANTES DO PROJETO: 
+1. **Compatibilidade**
+   - O reconhecimento de voz depende do suporte do navegador à Web Speech API.
+   - A disponibilidade de vozes varia conforme o sistema operacional e o navegador.
+   - É necessário conceder permissão de acesso ao microfone.
+   - A experiência pode variar entre navegadores (Chrome, Edge, Firefox etc.).
+
 ---
 
 ## 📁 Estrutura de Arquivos
