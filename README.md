@@ -96,7 +96,7 @@ A aplicação captura os comandos de voz do usuário pelo microfone em tempo rea
 
 ---
 
-## ‼️ DETALHES IMPORTANTES DO PROJETO: 
+## ‼️ DETALHES IMPORTANTES SOBRE O PROJETO: 
 1. **Compatibilidade**
    - O reconhecimento de voz depende do suporte do navegador à Web Speech API.
    - A disponibilidade de vozes varia conforme o sistema operacional e o navegador.
