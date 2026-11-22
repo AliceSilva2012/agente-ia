@@ -116,6 +116,7 @@ flowchart LR
     D -->|Falha / Rate Limit| F[🔄 Fallback OpenRouter]
     F --> E
     E -->|SpeechSynthesis| G[🔊 Áudio J.A.R.V.I.S.]
+```
 
 ---
 
