@@ -71,9 +71,9 @@ A aplicação captura os comandos de voz do usuário pelo microfone em tempo rea
    ```
 
 3. **Instale as dependências do Node.js:**
-  ```bash
-  npm install
-  ```
+   ```bash
+   npm install
+   ```
 
 4. **Configure as variáveis de ambiente:**
    Crie um arquivo `.env` na raiz do projeto com suas chaves de API:
