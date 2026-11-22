@@ -96,12 +96,26 @@ A aplicação captura os comandos de voz do usuário pelo microfone em tempo rea
 
 ---
 
-## ‼️ DETALHES IMPORTANTES SOBRE O PROJETO: 
-1. **Compatibilidade**
-   - O reconhecimento de voz depende do suporte do navegador à Web Speech API.
-   - A disponibilidade de vozes varia conforme o sistema operacional e o navegador.
-   - É necessário conceder permissão de acesso ao microfone.
-   - A experiência pode variar entre navegadores (Chrome, Edge, Firefox etc.).
+## ‼️ Detalhes importantes sobre o projeto: 
+> [!warning]
+> O reconhecimento de voz depende do suporte do navegador à Web Speech API.
+> A disponibilidade de vozes varia conforme o sistema operacional e o navegador.
+> É necessário conceder permissão de acesso ao microfone.
+> A experiência pode variar entre navegadores (Chrome, Edge, Firefox etc.).
+
+---
+
+## 🧠 Fluxo da Arquitetura
+
+```mermaid
+flowchart LR
+    A[🎙️ Voz do Usuário] -->|Web Speech API| B[💻 Front-end]
+    B -->|POST /api/chat| C[⚙️ Servidor Express]
+    C -->|Injeta Data/Hora| D{Groq API}
+    D -->|Sucesso| E[Resposta LLM]
+    D -->|Falha / Rate Limit| F[🔄 Fallback OpenRouter]
+    F --> E
+    E -->|SpeechSynthesis| G[🔊 Áudio J.A.R.V.I.S.]
 
 ---
 
