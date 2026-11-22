@@ -92,17 +92,15 @@ A aplicação captura os comandos de voz do usuário pelo microfone em tempo rea
 6. **Inicie a interface Front-end:**
    - Clique com o botão direito no arquivo `index.html` e selecione **Open with Live Server**.
    - Conceda a permissão de uso do microfone ao navegador.
-   - Clique no Reator Arc e comece a conversar com o J.A.R.V.I.S.!
+   - Clique no **Reator Arc** e comece a conversar com o J.A.R.V.I.S.!
 
 ---
 
-## ‼️ Detalhes importantes sobre o projeto: 
-> [!warning]
-> O reconhecimento de voz depende do suporte do navegador à Web Speech API.
-> A disponibilidade de vozes varia conforme o sistema operacional e o navegador.
-> É necessário conceder permissão de acesso ao microfone.
-> A experiência pode variar entre navegadores (Chrome, Edge, Firefox etc.).
-
+> [!WARNING]
+>  **‼️ Detalhes importantes sobre o projeto:**
+> - O reconhecimento de voz depende do suporte do navegador à **Web Speech API**.
+> - A disponibilidade de vozes varia conforme o sistema operacional e o navegador (Chrome, Edge, Safari, Firefox, etc.).
+> - É necessário conceder permissão de acesso ao microfone.
 ---
 
 ## 🧠 Fluxo da Arquitetura
