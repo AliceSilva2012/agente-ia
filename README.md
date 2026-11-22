@@ -56,7 +56,7 @@ A aplicação captura os comandos de voz do usuário pelo microfone em tempo rea
 ### Pré-requisitos
 - [Node.js](https://nodejs.org) (v18 ou superior recomendada) instalado na máquina.
 - Extensão **Live Server** instalada no VS Code.
-- Uma chave de API gratuita da [Groq](https://console.groq.com) e opcionalmente do [OpenRouter](https://openrouter.ai) para fallback.
+- Uma chave de API gratuita da [Groq](https://console.groq.com) e opcionalmente do [OpenRouter](https://openrouter.ai) para fallback (crie sua própria conta).
 
 ### ☕ Passo a Passo
 
