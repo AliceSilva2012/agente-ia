@@ -12,7 +12,7 @@
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 
-> Um assistente virtual interativo inspirado na IA do Homem de Ferro, combinando uma interface visual com **Reator Arc dinâmico**, inferência ultrarrápida via **Groq API** (`openai/gpt-oss-120b`), **fallback automático para OpenRouter** e APIs nativas do navegador para reconhecimento e síntese de voz em tempo real.
+> Um assistente virtual interativo inspirado na IA do Homem de Ferro, combinando uma interface visual com **Reator Arc dinâmico**, inferência ultrarrápida via **Groq API** (`openai/gpt-oss-120b`), **fallback automático para OpenRouter API** e APIs nativas do navegador para reconhecimento e síntese de voz em tempo real.
 
 > [!NOTE]
 > **⚡ Arquitetura v1.2:** Nova interface visual com **Reator Arc** interativo que alterna dinamicamente entre azul (standby) e vermelho (modo escuta) via filtros CSS, além de back-end resiliente com failover automático entre Groq e OpenRouter e pipeline de CI no GitHub Actions.
