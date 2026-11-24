@@ -11,7 +11,6 @@
 ![OpenRouter API](https://img.shields.io/badge/OpenRouter_API-6566F1?style=for-the-badge&logo=openai&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-CI[(https://github.com/AliceSilva2012/agente-ia/actions/workflows/node.js.yml/badge.svg)](https://github.com/AliceSilva2012/agente-ia/actions/workflows/node.js.yml)
 
 > Um assistente virtual interativo inspirado na IA do Homem de Ferro, combinando uma interface visual com **Reator Arc dinâmico**, inferência ultrarrápida via **Groq API** (`openai/gpt-oss-120b`), **fallback automático para OpenRouter API** e APIs nativas do navegador para reconhecimento e síntese de voz em tempo real.
 
