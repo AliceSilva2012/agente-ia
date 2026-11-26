@@ -21,7 +21,7 @@
 
 ## 💻 Sobre o Projeto
 
-O **J.A.R.V.I.S.** é uma aplicação full-stack local que conecta uma interface futurista a um servidor intermediário em Node.js e Express.
+O **J.A.R.V.I.S.** é um projeto full-stack local que conecta uma interface futurista a um servidor intermediário em Node.js e Express.
 
 A aplicação captura os comandos de voz do usuário pelo microfone em tempo real via **Web Speech Recognition API**, injeta dinamicamente o contexto de data e hora local no *system prompt* do back-end, consulta o modelo de linguagem principal na **Groq** (acionando o **OpenRouter** automaticamente em caso de falha) e devolve a resposta em áudio utilizando a **SpeechSynthesis API** com prioridade para vozes masculinas do sistema.
 
