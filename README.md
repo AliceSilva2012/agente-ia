@@ -101,6 +101,8 @@ A aplicação captura os comandos de voz do usuário pelo microfone em tempo rea
 > - O reconhecimento de voz depende do suporte do navegador à **Web Speech API**.
 > - A disponibilidade de vozes varia conforme o sistema operacional e o navegador (Chrome, Edge, Safari, Firefox, etc.).
 > - É necessário conceder permissão de acesso ao microfone.
+> - A ordem de iniciação dos servidores importa, inicie primeiro o servidor Back-end e depois o servidor Front-end. 
+
 ---
 
 ## 🧠 Fluxo da Arquitetura
